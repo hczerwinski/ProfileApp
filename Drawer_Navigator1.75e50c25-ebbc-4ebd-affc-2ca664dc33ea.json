@@ -1,0 +1,25 @@
+{
+    "type": "Drawer Navigator",
+    "translatedName": "Drawer Navigator",
+    "reactType": "DrawerNavigator",
+    "properties": {
+        "DrawerPosition": "left",
+        "TabNavigationOptions": {
+            "tabBarVisible": true
+        },
+        "TabNavigatorIcon": {},
+        "config": {
+            "contentOptions": {
+                "drawerPosition": "left"
+            }
+        },
+        "navigationOptions": {
+            "tabBarVisible": true
+        },
+        "tabNavigationOptions": {}
+    },
+    "children": [],
+    "id": "75e50c25-ebbc-4ebd-affc-2ca664dc33ea",
+    "thunkableVersion": 421,
+    "name": "Drawer_Navigator1"
+}
