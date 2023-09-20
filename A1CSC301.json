@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "5MPXrbeHbWeDWH56Prtxx0bET0w2": {
+      "type": "object",
+      "properties": {
+        "color": { "type": "string" },
+        "desc": { "type": "string" },
+        "dob": {
+          "type": "string",
+          "pattern": "^(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])(19|20)\\d{2}$"
+        },
+        "name": { "type": "string" }
+      },
+      "required": ["color", "desc", "dob", "name"]
+    },
+    "7Y4Accg4jkhQPR9LHW9QnE3no7T2": {
+      "type": "object",
+      "properties": {
+        "color": {
+          "type": "string",
+          "enum": ["Green"]
+        },
+        "desc": { "type": "string" },
+        "dob": {
+          "type": "string",
+          "pattern": "^(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])(19|20)\\d{2}$"
+        },
+        "image": {
+          "type": "string",
+          "format": "uri"
+        },
+        "name": { "type": "string" }
+      },
+      "required": ["color", "desc", "dob", "image", "name"]
+    }
+  },
+  "required": ["5MPXrbeHbWeDWH56Prtxx0bET0w2", "7Y4Accg4jkhQPR9LHW9QnE3no7T2"]
+}
