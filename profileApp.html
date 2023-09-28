@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Web Demo</title>
+
+    <style>
+        body{text-align: center;}
+        #enterDetails{float: left; width: 50%; background-color: rgb(126, 255, 212); color:rgb(206, 106, 252);}
+        #findDetails{float: left; width: 50%; background-color: rgb(206, 106, 252); color:rgb(126, 255, 212);}
+        #banner {
+            width: 1000;
+            height: 200;
+        }
+    </style>
+</head>
+<body>
+    <img id="banner" src="banner.png">
+    <div id="enterDetails">
+        <h1>Profile App</h1>
+        <iframe src="https://thunkable.site/w/4myLsmNoGvEYqMOc6V8cj" title="Chop Down the Tree Thunkable App" height = 800 width = 400></iframe>
+
+    </div>
+
+    <div id="findDetails">
+        <h1>Active Users</h1>
+        <h3 id="findName" type="text"></h3>
+        <img id="findImage" src="" height="300" width="300"> <br><br>
+
+        <h3 id="findName2" type="text"></h3>
+        <img id="findImage2" src="" height="300" width="300"> <br><br>
+
+    </div>   
+
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyD1vPFI16qwShHPnzHK6_LgH--yl1JXY1c",
+          authDomain: "real-profileapp-5463a.firebaseapp.com",
+          databaseURL: "https://real-profileapp-5463a-default-rtdb.firebaseio.com",
+          projectId: "real-profileapp-5463a",
+          storageBucket: "real-profileapp-5463a.appspot.com",
+          messagingSenderId: "495295509927",
+          appId: "1:495295509927:web:4c38289bc266bbe74d7282",
+          measurementId: "G-C6F7T1Q7LK"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+
+        import{getDatabase, set, get, update, remove, ref, child} from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
+
+        const database = getDatabase();
+        // Finders
+        var findName = document.querySelector("#findName");
+        var findImage = document.querySelector('#findImage');
+
+        var findName2 = document.querySelector("#findName2");
+        var findImage2 = document.querySelector('#findImage2');
+
+        // function InsertData() {
+        //     set(ref(database, "Users/" + enterID.value), {
+        //         Name: enterName.value,
+        //         ID: enterID.value,
+        //         Age: enterAge.value,
+        //     })
+        //     .then(()=>{
+        //         alert("Data Added Successfully! :D");
+        //     })
+        //     .catch((error)=>{
+        //         alert(error);
+        //     });
+        // }
+        
+        // function UpdateData() {
+        //     update(ref(database, "Users/" + enterID.value), {
+        //         Name: enterName.value,
+        //         Age: enterAge.value,
+        //     })
+        //     .then(()=>{
+        //         alert("Data Updated Successfully! :D");
+        //     })
+        //     .catch((error)=>{
+        //         alert(error);
+        //     })
+        // }
+
+        // function RemoveData() {
+        //     remove(ref(database, "Users/" + enterID.value))
+        //     .then(()=>{
+        //         alert("Data Removed Successfully! :D");
+        //     })
+        //     .catch((error)=>{
+        //         alert(error);
+        //     })
+        // }
+        var userID;
+        function FindData(userID) {
+            const dbref = ref(database);
+
+            get(child(dbref, userID))
+            .then((snapshot)=>{
+                if (snapshot.exists()) {
+                    findName.innerHTML = "Name: " + snapshot.val().name;
+                    findImage.src = snapshot.val().image;
+                }
+                else {
+                    alert("No Data Found :(");
+                }
+            })
+            .catch((error)=>{
+                alert(error);
+            })
+        }
+        function FindData2(userID) {
+            const dbref = ref(database);
+
+            get(child(dbref, userID))
+            .then((snapshot)=>{
+                if (snapshot.exists()) {
+                    findName2.innerHTML = "Name: " + snapshot.val().name;
+                    findImage2.src = snapshot.val().image;
+                }
+                else {
+                    alert("No Data Found :(");
+                }
+            })
+            .catch((error)=>{
+                alert(error);
+            })
+        }
+        FindData("5MPXrbeHbWeDWH56Prtxx0bET0w2/"); 
+        FindData2("7Y4Accg4jkhQPR9LHW9QnE3no7T2/");
+        
+      </script>
+</body>
+</html>
